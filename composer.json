@@ -1,5 +1,5 @@
 {
-    "name": "xuechaoc/EtcdPHP",
+    "name": "xuechaoc/etcd-php",
     "description": "A php client for etcd",
     "type": "library",
     "require": {
