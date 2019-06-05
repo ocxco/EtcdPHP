@@ -28,6 +28,11 @@ class Base
      */
     private static $_instance = [];
 
+    /**
+     * @param string $server
+     * @param string $apiVersion
+     * @return Client
+     */
     public static function instance($server = 'http://localhost:2379', $apiVersion = 'v2')
     {
         $class = get_called_class();

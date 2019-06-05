@@ -158,5 +158,28 @@ class Client extends Base
         return $body;
     }
 
+    /**
+     * 监听数据变更.
+     *
+     * @param $key
+     * @param bool $recursive
+     *
+     * @return mixed
+     *
+     * @throws \Exception
+     */
+    public function watch($key, $recursive = false)
+    {
+        $keyPath = $this->getKeyPath($key);
+        $params = [
+            'wait' => true,
+            'recursive' => $recursive ? 'true' : 'false',
+        ] ;
+        $waitUri = $keyPath . '?' . http_build_query($params);
+        $response = $this->http->get($waitUri);
+        $body = $this->_result($response);
+        return $body;
+    }
+
 }
 
