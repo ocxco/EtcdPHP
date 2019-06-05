@@ -16,7 +16,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "EtcdPHP\\clients\\": "src/clients/"
+            "EtcdPHP\\clients\\v2\\": "src/clients/v2/"
         }
     }
 }

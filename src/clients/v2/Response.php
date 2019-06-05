@@ -6,7 +6,7 @@
  * Time: 18:23
  */
 
-namespace EtcdPHP\clients;
+namespace EtcdPHP\clients\v2;
 
 class Response
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace EtcdPHP\clients;
+namespace EtcdPHP\clients\v2;
 
 use GuzzleHttp\Client as gzClient;
 use GuzzleHttp\Exception\BadResponseException;

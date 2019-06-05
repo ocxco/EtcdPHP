@@ -9,7 +9,7 @@
 require __DIR__ . '/vendor/autoload.php';
 
 
-$client = \EtcdPHP\clients\Client::instance();
+$client = \EtcdPHP\clients\v2\Client::instance();
 
 /**
  * Test Key

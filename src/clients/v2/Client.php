@@ -1,6 +1,6 @@
 <?php
 
-namespace EtcdPHP\clients;
+namespace EtcdPHP\clients\v2;
 
 class Client extends Base
 {
