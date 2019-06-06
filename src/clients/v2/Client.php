@@ -168,17 +168,36 @@ class Client extends Base
      *
      * @throws \Exception
      */
-    public function watch($key, $recursive = false)
+    public function watch($key, $recursive = true)
     {
         $keyPath = $this->getKeyPath($key);
         $params = [
             'wait' => true,
             'recursive' => $recursive ? 'true' : 'false',
-        ] ;
+        ];
         $waitUri = $keyPath . '?' . http_build_query($params);
         $response = $this->http->get($waitUri);
         $body = $this->_result($response);
         return $body;
+    }
+
+    /**
+     * 生成异步监听的Uri.
+     * 配置管理客户端需要使用.
+     *
+     * @param $key
+     * @param $recursive
+     * @return string
+     */
+    public function getWatchUri($key, $recursive)
+    {
+        $keyPath = $this->getKeyPath($key);
+        $params = [
+            'wait' => true,
+            'recursive' => $recursive ? 'true' : 'false',
+        ];
+        $watchUri = $keyPath . '?' . http_build_query($params);
+        return $watchUri;
     }
 
 }
