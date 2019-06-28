@@ -30,12 +30,12 @@ class Client
 
     /**
      * @param string $endpoints
-     * @param string $apiVersion
      * @param array $options
+     * @param string $apiVersion
      *
      * @return ClientInterface
      */
-    public static function instance($endpoints = 'http://localhost:2379', $apiVersion = 'v2', $options = [])
+    public static function instance($endpoints = 'http://localhost:2379', $options = [], $apiVersion = 'v2')
     {
         switch ($apiVersion) {
             case "v3":
@@ -47,10 +47,14 @@ class Client
         }
         self::$_instance->endpoints = $endpoints;
         self::$_instance->apiVersion = $apiVersion;
-        self::$_instance->options = $options;
-        self::$_instance->http = new gzClient([
-            'base_uri' => self::$_instance->endpoints
-        ]);
+        if (is_array($options)) {
+            $options['base_uri'] = self::$_instance->endpoints;
+        } else {
+            $options = [
+                'base_uri' => self::$_instance->endpoints,
+            ];
+        }
+        self::$_instance->http = new gzClient($options);
         return self::$_instance;
     }
 
